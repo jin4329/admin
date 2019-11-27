@@ -29,6 +29,7 @@ spring:
     hibernate:
       ddl-auto: none
       naming:
+#        表名及字段全小写下划线分隔命名策略(默认)
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
 # bean可以重复定义，后定义的覆盖前定义的
   main:
@@ -43,9 +44,12 @@ mapper:
 # MyBatis
 mybatis:
   # 搜索指定包别名
-  typeAliasesPackage: com.yhong
+  typeAliasesPackage: com.jin.admin
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mapper/**/*Mapper.xml
+#  驼峰
+  configuration:
+    map-underscore-to-camel-case: true
 
 # PageHelper分页插件
 pagehelper:

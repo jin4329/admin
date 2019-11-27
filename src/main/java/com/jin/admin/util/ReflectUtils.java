@@ -329,10 +329,10 @@ public class ReflectUtils {
     }
 
     /**
-     * @author Jin
-     * @description
      * @param fieldName 字段名
      * @return java.lang.String
+     * @author Jin
+     * @description
      */
     public static String getterMethodName(String fieldName) {
         return GETTER_PREFIX + StringUtils.capitalize(fieldName);

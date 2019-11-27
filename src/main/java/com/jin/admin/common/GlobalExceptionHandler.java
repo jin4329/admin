@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public BaseRet validationException(MethodArgumentNotValidException exception){
-        BaseRet  ret = new BaseRet();
+        BaseRet  ret = BaseRet.newInstance();
         ret.setCode("-1");
         BindingResult result = exception.getBindingResult();
         if (result.hasErrors()) {
@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageConversionException.class)
     public BaseRet parameterTypeException(HttpMessageConversionException exception){
-        BaseRet result = new BaseRet();
+        BaseRet result = BaseRet.newInstance();
         result.setCode("-1");
         result.setMsg("类型转换错误:" + exception.getCause().getLocalizedMessage());
         log.error("类型转换错误:{}", exception.getCause().getLocalizedMessage());

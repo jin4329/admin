@@ -23,6 +23,10 @@ public class BaseRet<T> {
     private BaseRet() {
     }
 
+    public static BaseRet newInstance() {
+        return new BaseRet();
+    }
+
     private BaseRet(T data) {
         this.data = data;
     }

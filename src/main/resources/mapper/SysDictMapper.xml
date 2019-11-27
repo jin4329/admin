@@ -1,0 +1,29 @@
+<?wtrjXml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jin.admin.dao.mapper.SysDictMapper">
+
+    <select id="getDictList" resultType="com.jin.admin.response.DictData">
+        select
+            id, pid, name, remark, status, update_time, create_time
+        from sys_dict
+        <where>
+            <if test="name != null and name != ''">
+                and position(#{name} in name)
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="pid == null">
+                and pid is null
+            </if>
+            <if test="pid != null">
+                <if test="pid != 0">
+                    and pid = #{pid}
+                </if>
+                <if test="pid == 0">
+                    and pid is not null
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>
