@@ -1,4 +1,4 @@
-package com.jin.admin.common;
+package com.jin.admin.common.basebean;
 
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;

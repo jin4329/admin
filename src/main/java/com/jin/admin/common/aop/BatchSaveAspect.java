@@ -1,4 +1,4 @@
-package com.jin.admin.common;
+package com.jin.admin.common.aop;
 
 import com.jin.admin.util.ListUtil;
 import lombok.SneakyThrows;

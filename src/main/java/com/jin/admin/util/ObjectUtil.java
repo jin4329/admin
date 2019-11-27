@@ -1,7 +1,7 @@
 package com.jin.admin.util;
 
-import com.jin.admin.common.BusinessException;
-import com.jin.admin.common.UtilException;
+import com.jin.admin.common.exception.BusinessException;
+import com.jin.admin.common.exception.UtilException;
 import com.jin.admin.response.IdNameDataWithChildren;
 import org.springframework.util.ObjectUtils;
 

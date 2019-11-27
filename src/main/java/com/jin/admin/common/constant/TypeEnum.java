@@ -1,4 +1,4 @@
-package com.jin.admin.common;
+package com.jin.admin.common.constant;
 
 import lombok.Getter;
 

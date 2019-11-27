@@ -1,5 +1,6 @@
-package com.jin.admin.common;
+package com.jin.admin.common.basebean;
 
+import com.jin.admin.common.exception.BusinessException;
 import lombok.Data;
 
 /**

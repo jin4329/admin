@@ -1,6 +1,6 @@
 package com.jin.admin.service.admin;
 
-import com.jin.admin.common.PageRes;
+import com.jin.admin.common.basebean.PageRes;
 import com.jin.admin.param.GetDictPageParam;
 import com.jin.admin.param.SaveDictParam;
 import com.jin.admin.response.DictData;

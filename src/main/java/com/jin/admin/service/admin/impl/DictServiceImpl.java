@@ -2,7 +2,7 @@ package com.jin.admin.service.admin.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jin.admin.common.PageRes;
+import com.jin.admin.common.basebean.PageRes;
 import com.jin.admin.dao.mapper.SysDictMapper;
 import com.jin.admin.dao.repository.SysDictRepository;
 import com.jin.admin.model.SysDict;
@@ -17,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**

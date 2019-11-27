@@ -1,6 +1,6 @@
 package com.jin.admin.param;
 
-import com.jin.admin.common.PageReq;
+import com.jin.admin.common.basebean.PageReq;
 import lombok.Data;
 
 /**

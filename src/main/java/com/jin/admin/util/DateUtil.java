@@ -1,7 +1,7 @@
 package com.jin.admin.util;
 
 
-import com.jin.admin.common.TypeEnum;
+import com.jin.admin.common.constant.TypeEnum;
 import org.springframework.util.ObjectUtils;
 
 import java.text.ParseException;
