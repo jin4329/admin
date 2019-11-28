@@ -2,4 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jin.admin.dao.mapper.BsBasicUserInfoMapper">
 
+    <select id="getUserInfoData" resultType="com.jin.admin.response.UserInfoData">
+        select
+            u.id userId, u.basic_user_id, u.login_name, u.type, u.status,
+            bu.mark_id, bu.name, bu.nickname, bu.tel, bu.email, bu.sex, bu.address, bu.head_img_url, bu.status basicUserStatus,
+            au.password
+        from bs_user_info u left join bs_basic_user_info bu on u.basic_user_id = bu.id
+        left join sys_admin_user au on u.id = au.user_id
+        where u.id = #{userId}
+    </select>
 </mapper>

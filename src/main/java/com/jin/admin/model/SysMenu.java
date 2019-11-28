@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-26
+ * @author Jin 2019-11-28
  */
 @Data
 @Entity
@@ -29,6 +29,11 @@ public class SysMenu {
 	private String name;
 
 	/**
+	 * 图标
+	 */
+	private String icon;
+
+	/**
 	 * 菜单路由
 	 */
 	private String uri;
@@ -37,6 +42,11 @@ public class SysMenu {
 	 * 父id
 	 */
 	private Long pid;
+
+	/**
+	 * 菜单或者按钮
+	 */
+	private Long type;
 
 	/**
 	 * 0禁用  1启用

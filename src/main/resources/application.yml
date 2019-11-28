@@ -31,22 +31,22 @@ spring:
       naming:
 #        表名及字段全小写下划线分隔命名策略(默认)
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-# bean可以重复定义，后定义的覆盖前定义的
+    open-in-view: false
+  # bean可以重复定义，后定义的覆盖前定义的
   main:
     allow-bean-definition-overriding: true
 
 ##通用mapper
 mapper:
-  mappers:
-    - com.jin.admin.common.MyBaseMapper
+  mappers: com.jin.admin.common.MyBaseMapper
   not-empty: false
   identity: MYSQL
 # MyBatis
 mybatis:
   # 搜索指定包别名
-  typeAliasesPackage: com.jin.admin
+  typeAliasesPackage: com.jin.admin.model
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
-  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  mapperLocations: classpath:mapper/**/*Mapper.xml
 #  驼峰
   configuration:
     map-underscore-to-camel-case: true
@@ -64,7 +64,16 @@ xss:
   # 过滤开关
   enabled: false
   # 排除链接（多个用逗号分隔）
-  excludes: /system/notice/*,/job/info/*,/search/*,/user/userLogin,/user/userInfo,/user/getOldDetail
+  excludes:
   # 匹配链接
-  urlPatterns: /system/*,/monitor/*,/tool/*
+  urlPatterns:
+
+
+enable:
+  # 校验token
+  token: false
+# 但设备登录
+  single:
+    sign: false
+
 

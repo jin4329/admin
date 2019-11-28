@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-26
+ * @author Jin 2019-11-28
  */
 @Data
 @Entity
@@ -23,13 +23,27 @@ public class BsBasicUserInfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	private String markId;
+
+	/**
+	 * 姓名
+	 */
 	private String name;
 
+	/**
+	 * 昵称
+	 */
 	private String nickname;
 
+	/**
+	 * 电话
+	 */
 	private String tel;
 
-	private String loginName;
+	/**
+	 * 邮箱
+	 */
+	private String email;
 
 	private Long sex;
 

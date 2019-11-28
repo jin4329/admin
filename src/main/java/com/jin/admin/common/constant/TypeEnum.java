@@ -26,4 +26,18 @@ public interface TypeEnum {
         }
     }
 
+    @Getter
+    enum Status {
+        ENABLE(1L, "启用"),
+        DISABLE(0L, "禁用"),
+        ;
+        private Long code;
+        private String name;
+
+        Status(Long code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+    }
+
 }

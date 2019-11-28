@@ -12,13 +12,16 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-26
+ * @author Jin 2019-11-28
  */
 @Data
 @Entity
 @Table(name = "bs_user_info")
 public class BsUserInfo {
 
+	/**
+	 * 系统中的user_id指的此id
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,7 +29,9 @@ public class BsUserInfo {
 	/**
 	 * basic_user_info表的id
 	 */
-	private Long autoUserId;
+	private Long basicUserId;
+
+	private String loginName;
 
 	/**
 	 * 类型
