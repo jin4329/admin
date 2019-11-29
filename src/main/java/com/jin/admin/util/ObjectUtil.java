@@ -215,19 +215,19 @@ public class ObjectUtil {
             throw new BusinessException(DEFAULT_CODE, DEFAULT_MSG);
         }
     }
-    public static void main(String[] args) {
-        Collection<IdNameDataWithChildren> dataList = new HashSet<>();
-        dataList.add(new IdNameDataWithChildren(1, null));
-        dataList.add(new IdNameDataWithChildren(2, null));
-        dataList.add(new IdNameDataWithChildren(3, null));
-        dataList.add(new IdNameDataWithChildren(5, 1));
-        dataList.add(new IdNameDataWithChildren(6, 5));
-        dataList.add(new IdNameDataWithChildren(7, 5));
-        dataList.add(new IdNameDataWithChildren(8, 6));
-        dataList.add(new IdNameDataWithChildren(9, 1));
-        dataList.add(new IdNameDataWithChildren(10, 7));
-        dataList.add(new IdNameDataWithChildren(4, null));
-        Collection<IdNameDataWithChildren> idNameDataWithChildren = buildDataWithChildren(dataList, null, "id", "parentId", "children");
-        System.out.println(idNameDataWithChildren);
-    }
+//    public static void main(String[] args) {
+//        Collection<IdNameDataWithChildren> dataList = new HashSet<>();
+//        dataList.add(new IdNameDataWithChildren(1, null));
+//        dataList.add(new IdNameDataWithChildren(2, null));
+//        dataList.add(new IdNameDataWithChildren(3, null));
+//        dataList.add(new IdNameDataWithChildren(5, 1));
+//        dataList.add(new IdNameDataWithChildren(6, 5));
+//        dataList.add(new IdNameDataWithChildren(7, 5));
+//        dataList.add(new IdNameDataWithChildren(8, 6));
+//        dataList.add(new IdNameDataWithChildren(9, 1));
+//        dataList.add(new IdNameDataWithChildren(10, 7));
+//        dataList.add(new IdNameDataWithChildren(4, null));
+//        Collection<IdNameDataWithChildren> idNameDataWithChildren = buildDataWithChildren(dataList, null, "id", "parentId", "children");
+//        System.out.println(idNameDataWithChildren);
+//    }
 }

@@ -3,6 +3,9 @@ package com.jin.admin.service.admin.impl;
 import com.jin.admin.common.constant.Constant;
 import com.jin.admin.common.exception.BusinessException;
 import com.jin.admin.dao.mapper.BsBasicUserInfoMapper;
+import com.jin.admin.dao.mapper.SysMenuMapper;
+import com.jin.admin.dao.repository.SysMenuRepository;
+import com.jin.admin.response.MenuData;
 import com.jin.admin.response.UserInfoData;
 import com.jin.admin.service.admin.RedisService;
 import com.jin.admin.util.ObjectUtil;
@@ -10,6 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jin
@@ -23,6 +29,10 @@ public class RedisServiceImpl implements RedisService {
     private RedisTemplate redisTemplate;
     @Autowired
     private BsBasicUserInfoMapper bsBasicUserInfoMapper;
+    @Autowired
+    private SysMenuRepository sysMenuRepository;
+    @Autowired
+    private SysMenuMapper sysMenuMapper;
 
     @Override
     public UserInfoData getBasicUserInfo(Long userId) {
@@ -34,7 +44,7 @@ public class RedisServiceImpl implements RedisService {
             // 从数据库拿
             userInfo = bsBasicUserInfoMapper.getUserInfoData(userId);
             if (ObjectUtil.isEmpty(userInfo)) {
-                throw new BusinessException("数据不存在！");
+                throw new BusinessException("用户不存在");
             }
             redisTemplate.opsForValue().set(String.format(Constant.RedisKey.USER_INFO, userId), userInfo);
         }
@@ -44,5 +54,14 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public String getToken(Long userId) {
         return (String) redisTemplate.opsForValue().get(String.format(Constant.RedisKey.USER_TOKEN, userId));
+    }
+
+    @Override
+    public List<MenuData> getMenuList(Long userId) {
+        if (ObjectUtil.isEmpty(userId)) {
+            return new ArrayList<>();
+        }
+
+        return null;
     }
 }

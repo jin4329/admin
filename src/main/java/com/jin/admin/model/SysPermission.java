@@ -1,5 +1,6 @@
 package com.jin.admin.model;
 
+import java.util.Date;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-28
+ * @author Jin 2019-11-29
  */
 @Data
 @Entity
@@ -28,8 +29,21 @@ public class SysPermission {
 	private String name;
 
 	/**
-	 * 权限类型 1菜单  2文件
+	 * 备注
 	 */
-	private Long type;
+	private String remark;
+
+	/**
+	 * 0禁用  1启用
+	 */
+	private Long status;
+
+	@CreationTimestamp
+	private Date createTime;
+
+	/**
+	 * 创建者
+	 */
+	private Long createBy;
 
 }

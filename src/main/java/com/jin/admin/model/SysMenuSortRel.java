@@ -11,25 +11,22 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-28
+ * @author Jin 2019-11-29
  */
 @Data
 @Entity
-@Table(name = "sys_permission_menu_rel")
-public class SysPermissionMenuRel {
+@Table(name = "sys_menu_sort_rel")
+public class SysMenuSortRel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	/**
-	 * 权限id
-	 */
-	private Long permissionId;
+	private Long menuId;
 
 	/**
-	 * 菜单id
+	 * 排序
 	 */
-	private Long menuId;
+	private Long sortNum;
 
 }

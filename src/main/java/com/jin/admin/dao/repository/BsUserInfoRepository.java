@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface BsUserInfoRepository extends BaseRepository<BsUserInfo, Long>{
-
+    BsUserInfo getByLoginNameAndType(String loginName, Long type);
 }

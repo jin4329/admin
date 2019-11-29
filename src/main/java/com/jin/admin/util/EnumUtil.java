@@ -1,5 +1,6 @@
 package com.jin.admin.util;
 
+import com.jin.admin.common.constant.TypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
@@ -14,11 +15,12 @@ import java.util.*;
  */
 @Slf4j
 public class EnumUtil {
-    private final static String GET_METHOD_NAME = "getCode";
+    private final static String GET_CODE = "getCode";
+    private final static String GET_NAME = "getName";
 
     public static <E extends Enum<E>> E getEnum(final Class<E> enumClass, Object code) {
         Assert.notNull(code, "枚举类对应码不能为空");
-        return work(enumClass, String.valueOf(code), GET_METHOD_NAME);
+        return work(enumClass, String.valueOf(code), GET_CODE);
     }
 
     /**
@@ -35,7 +37,7 @@ public class EnumUtil {
     }
 
     public static <E extends Enum<E>> Map<String, E> getEnum(final Class<E> enumClass, Collection<Object> codeCollection) {
-        return getEnum(enumClass, codeCollection, GET_METHOD_NAME);
+        return getEnum(enumClass, codeCollection, GET_CODE);
     }
 
     /**
@@ -65,7 +67,7 @@ public class EnumUtil {
     }
 
     public static <E extends Enum<E>> Map<String, E> getEnum(final Class<E> enumClass, Object[] codeArr) {
-        return getEnum(enumClass, Arrays.asList(codeArr), GET_METHOD_NAME);
+        return getEnum(enumClass, Arrays.asList(codeArr), GET_CODE);
     }
 
     private static <E extends Enum<E>> E work(final Class<E> enumClass, final String code, String codeMethodName) {
@@ -87,9 +89,47 @@ public class EnumUtil {
         return null;
     }
 
+    /**
+     * @author Jin
+     * @description 通过枚举和code获取code对应的描述信息，可能返回null，默认getter分别是getCode和getName
+     * @param enumClass
+     * @param code
+     * @return java.lang.String
+     */
+    public static <E> String getEnumMsg(final Class<E> enumClass, final Object code) {
+        return work(enumClass, code, GET_CODE, GET_NAME);
+    }
+
+    public static <E> String getEnumMsg(final Class<E> enumClass, final Object code, String msgMethodName) {
+        return work(enumClass, code, GET_CODE, msgMethodName);
+    }
+
+    public static <E> String getEnumMsg(final Class<E> enumClass, final Object code, String codeMethodName, String msgMethodName) {
+        return work(enumClass, code, codeMethodName, msgMethodName);
+    }
+
+    private static <E> String work(final Class<E> enumClass, final Object code, String codeMethodName, String msgMethodName) {
+        Assert.notNull(enumClass, "枚举类不能为空");
+        Assert.notNull(codeMethodName, "枚举类对应码方法名不能为空");
+        Assert.notNull(msgMethodName, "枚举类描述信息方法名不能为空");
+
+        try {
+            E[] objects = enumClass.getEnumConstants();
+            Method getCode = enumClass.getMethod(codeMethodName);
+            for (E obj : objects) {
+                Object invoke = getCode.invoke(obj);
+                if (String.valueOf(invoke).equals(code)) {
+                    Method getMsg = enumClass.getMethod(msgMethodName);
+                    return (String) getMsg.invoke(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return null;
+    }
+
 //    public static void main(String[] args) {
-//        String[] str = new String[]{"member", "administrator", ""};
-//        Map<String, CommonTypeEnum.GroupMemberRoleType> anEnum = getEnum(CommonTypeEnum.GroupMemberRoleType.class, str);
-//        System.out.println(anEnum.size());
+//        System.out.println(work(TypeEnum.Status.class, "0", GET_CODE, GET_NAME));
 //    }
 }

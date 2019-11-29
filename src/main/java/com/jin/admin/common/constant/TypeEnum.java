@@ -40,4 +40,32 @@ public interface TypeEnum {
         }
     }
 
+    @Getter
+    enum UserType {
+        ADMIN(5L, "启用"),
+        ;
+        private Long code;
+        private String name;
+
+        UserType(Long code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+    }
+
+    @Getter
+    enum UserStatus {
+        ENABLE(1L, "启用"),
+        DISABLE(0L, "禁用"),
+        FREEZE(7L, "冻结"),
+        ;
+        private Long code;
+        private String name;
+
+        UserStatus(Long code, String name) {
+            this.code = code;
+            this.name = name;
+        }
+    }
+
 }

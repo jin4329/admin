@@ -20,7 +20,7 @@ import javax.validation.Valid;
  * @date 2019/11/26 14:39
  */
 @Slf4j
-@RequestMapping("/dict/")
+@RequestMapping("/admin/dict/")
 @RestController
 public class DictController extends AbstractController {
     @Autowired

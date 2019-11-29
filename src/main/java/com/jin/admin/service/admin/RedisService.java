@@ -1,7 +1,10 @@
 package com.jin.admin.service.admin;
 
 import com.jin.admin.model.BsBasicUserInfo;
+import com.jin.admin.response.MenuData;
 import com.jin.admin.response.UserInfoData;
+
+import java.util.List;
 
 /**
  * @author Jin
@@ -12,4 +15,6 @@ public interface RedisService {
     UserInfoData getBasicUserInfo(Long userId);
 
     String getToken(Long userId);
+
+    List<MenuData> getMenuList(Long userId);
 }

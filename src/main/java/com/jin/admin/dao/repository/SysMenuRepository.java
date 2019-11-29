@@ -3,6 +3,8 @@ package com.jin.admin.dao.repository;
 import com.jin.admin.model.SysMenu;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 
  * @author Jin 
@@ -10,5 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SysMenuRepository extends BaseRepository<SysMenu, Long>{
-
+    List<SysMenu> getByIdIn(List<Integer> ids);
 }

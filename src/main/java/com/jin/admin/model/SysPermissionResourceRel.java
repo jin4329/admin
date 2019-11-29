@@ -1,6 +1,5 @@
 package com.jin.admin.model;
 
-import java.util.Date;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -16,47 +15,26 @@ import org.hibernate.annotations.*;
  */
 @Data
 @Entity
-@Table(name = "sys_file")
-public class SysFile {
+@Table(name = "sys_permission_resource_rel")
+public class SysPermissionResourceRel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	/**
-	 * 文件名
+	 * 权限id
 	 */
-	private String name;
+	private Long permissionId;
 
 	/**
-	 * 文件路径
+	 * 资源id
 	 */
-	private String url;
+	private Long resourceId;
 
 	/**
-	 * 备注
-	 */
-	private String remark;
-
-	/**
-	 * 类型
+	 * 权限类型 9菜单  10文件
 	 */
 	private Long type;
-
-	/**
-	 * 大小，kb
-	 */
-	private Double size;
-
-	/**
-	 * 创建者
-	 */
-	private Long createBy;
-
-	@UpdateTimestamp
-	private Date updateTime;
-
-	@CreationTimestamp
-	private Date createTime;
 
 }

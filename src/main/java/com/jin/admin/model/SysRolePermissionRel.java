@@ -1,6 +1,5 @@
 package com.jin.admin.model;
 
-import java.util.Date;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -16,31 +15,21 @@ import org.hibernate.annotations.*;
  */
 @Data
 @Entity
-@Table(name = "sys_dict")
-public class SysDict {
+@Table(name = "sys_role_permission_rel")
+public class SysRolePermissionRel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	/**
-	 * 父id
+	 * 角色id
 	 */
-	private Long pid;
-
-	private String name;
-
-	private String remark;
+	private Long roleId;
 
 	/**
-	 * 0禁用  1启用
+	 * 权限id
 	 */
-	private Long status;
-
-	@UpdateTimestamp
-	private Date updateTime;
-
-	@CreationTimestamp
-	private Date createTime;
+	private Long permissionId;
 
 }

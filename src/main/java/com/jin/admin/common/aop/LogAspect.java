@@ -2,6 +2,7 @@ package com.jin.admin.common.aop;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jin.admin.dao.mapper.SysLogMapper;
+import com.jin.admin.dao.repository.SysLogRepository;
 import com.jin.admin.model.SysLog;
 import com.jin.admin.util.IpUtil;
 import com.jin.admin.util.JWTUtil;
@@ -34,7 +35,7 @@ import java.util.Set;
 @Slf4j
 public class LogAspect {
     @Autowired
-    private SysLogMapper sysLogMapper;
+    private SysLogRepository sysLogRepository;
 
     @Pointcut("execution(public * com.jin.admin.controller..*.*(..))")
     public void pointcut() {
@@ -58,7 +59,7 @@ public class LogAspect {
         try {
             param = JSONObject.toJSONString(args);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.warn("log：入参转json错误！");
         }
         sysLog.setParams(param);
         sysLog.setUrl(url);
@@ -75,7 +76,6 @@ public class LogAspect {
                 List list = (List) data;
                 size = list.size();
             } catch (Exception e) {
-                e.printStackTrace();
             }
 
         } else if (data instanceof Set) {
@@ -83,7 +83,6 @@ public class LogAspect {
                 Set set = (Set) data;
                 size = set.size();
             } catch (Exception e) {
-                e.printStackTrace();
             }
         }
 
@@ -98,15 +97,14 @@ public class LogAspect {
             if (dataStr.length() < 1000) {
                 size = null;
             }
-            sysLog.setResult(JSONObject.toJSONString(data));
+            sysLog.setResult(dataStr);
         } catch (Exception e) {
-            e.printStackTrace();
         }
         sysLog.setCode(ReflectUtils.invokeGetter(result, "code"));
         sysLog.setMsg(ReflectUtils.invokeGetter(result, "msg"));
-        sysLogMapper.insert(sysLog);
+        sysLogRepository.save(sysLog);
 
-        log.info("调用结束，用时：{}，出参：{}", time, ObjectUtils.isEmpty(size) ? result : "是集合，长度为" + size);
+        log.info("调用结束，url:{}，用时：{}，出参：{}", url, time, ObjectUtils.isEmpty(size) ? result : "是集合，长度为" + size);
         return result;
 
     }

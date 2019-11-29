@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-28
+ * @author Jin 2019-11-29
  */
 @Data
 @Entity
@@ -34,7 +34,7 @@ public class BsUserInfo {
 	private String loginName;
 
 	/**
-	 * 类型
+	 * 类型 5后台管理用户
 	 */
 	private Long type;
 

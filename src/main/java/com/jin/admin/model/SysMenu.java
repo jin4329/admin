@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-28
+ * @author Jin 2019-11-29
  */
 @Data
 @Entity
@@ -24,9 +24,21 @@ public class SysMenu {
 	private Long id;
 
 	/**
-	 * 菜单名称
+	 * router中的path和name，驼峰并首字母大写
 	 */
 	private String name;
+
+	/**
+	 * 路由
+	 */
+	private String path;
+
+	private String title;
+
+	/**
+	 * 是否隐藏，隐藏即为按钮
+	 */
+	private Integer hidden;
 
 	/**
 	 * 图标
@@ -34,17 +46,12 @@ public class SysMenu {
 	private String icon;
 
 	/**
-	 * 菜单路由
-	 */
-	private String uri;
-
-	/**
 	 * 父id
 	 */
 	private Long pid;
 
 	/**
-	 * 菜单或者按钮
+	 * 2菜单 3按钮
 	 */
 	private Long type;
 
@@ -53,7 +60,17 @@ public class SysMenu {
 	 */
 	private Long status;
 
+	/**
+	 * 所属页面id
+	 */
+	private Long pageId;
+
 	@CreationTimestamp
 	private Date createTime;
+
+	/**
+	 * 创建者
+	 */
+	private Long createBy;
 
 }

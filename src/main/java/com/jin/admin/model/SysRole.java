@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-28
+ * @author Jin 2019-11-29
  */
 @Data
 @Entity
@@ -40,5 +40,10 @@ public class SysRole {
 
 	@CreationTimestamp
 	private Date createTime;
+
+	/**
+	 * 创建者
+	 */
+	private Long createBy;
 
 }

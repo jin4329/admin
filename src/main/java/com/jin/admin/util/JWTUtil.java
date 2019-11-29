@@ -25,7 +25,7 @@ public class JWTUtil {
      * @param map 例如 传入的map.put("userId",4481973312226302L)
      * @return 获得的token
      */
-    public static String produceJWTToken(Map<String, Object> map) {
+    public static String produceJwtToken(Map<String, Object> map) {
         try {
 
             Algorithm algorithm = Algorithm.HMAC256(Constant.Jwt.SECRET);
@@ -77,7 +77,7 @@ public class JWTUtil {
             DecodedJWT jwt = verifier.verify(token);
             return jwt.getClaim("userId").asLong();
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.error("没有token或解析错误：{}", token);
         }
 
         return null;

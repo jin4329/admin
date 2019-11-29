@@ -11,25 +11,19 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-28
+ * @author Jin 2019-11-29
  */
 @Data
 @Entity
-@Table(name = "sys_permission_file_rel")
-public class SysPermissionFileRel {
+@Table(name = "sys_user_permission_rel")
+public class SysUserPermissionRel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	/**
-	 * 权限id
-	 */
-	private Long permissionId;
+	private Long userId;
 
-	/**
-	 * 文件id
-	 */
-	private Long fileId;
+	private Long permissionId;
 
 }
