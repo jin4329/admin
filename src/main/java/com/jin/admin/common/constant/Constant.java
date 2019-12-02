@@ -14,11 +14,13 @@ public class Constant {
         public static final String SECRET = "jinssecret";
         public static final String ISSUER = "Jin";
         public static final String NAME = "token";
+        public static final Integer EXPIRE_AT = 3600 * 24 * 30;
     }
 
     public static class RedisKey {
         public static final String USER_INFO = "user_info_%s";
-        public static final String USER_TOKEN = "user_info_%s";
+        public static final String USER_TOKEN = "user_token_%s";
+        public static final String USER_MENU = "user_menu_%s";
     }
 
 }

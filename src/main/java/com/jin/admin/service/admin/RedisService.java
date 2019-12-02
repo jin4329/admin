@@ -1,6 +1,5 @@
 package com.jin.admin.service.admin;
 
-import com.jin.admin.model.BsBasicUserInfo;
 import com.jin.admin.response.MenuData;
 import com.jin.admin.response.UserInfoData;
 
@@ -17,4 +16,22 @@ public interface RedisService {
     String getToken(Long userId);
 
     List<MenuData> getMenuList(Long userId);
+
+    String generateToken(Long userId);
+
+    /**
+     * @param key
+     * @return
+     * @author Jin
+     * @description 删除缓存
+     */
+    void remove(String key);
+
+    /**
+     * @param preKey 以preKey开头的key
+     * @return
+     * @author Jin
+     * @description 删除以preKey开头key的缓存
+     */
+    void removeByPre(String preKey);
 }

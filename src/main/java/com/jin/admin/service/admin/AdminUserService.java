@@ -13,4 +13,6 @@ import javax.validation.Valid;
  */
 public interface AdminUserService {
     AdminLoginData login(AdminLoginParam param);
+
+    void loginOut(Long userId);
 }

@@ -13,4 +13,5 @@ import java.util.List;
 public class AdminLoginData {
     private UserInfoData userInfo;
     private List<MenuData> menuList;
+    private String token;
 }

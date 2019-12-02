@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SysAdminUserRepository extends BaseRepository<SysAdminUser, Long>{
-
+    SysAdminUser getByUserId(Long userId);
 }

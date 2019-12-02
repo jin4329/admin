@@ -58,7 +58,7 @@ public class JWTUtil {
 
     private static Date buildExpirationDate() {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_WEEK, 52);
+        calendar.add(Calendar.SECOND, Constant.Jwt.EXPIRE_AT);
         return calendar.getTime();
     }
 
