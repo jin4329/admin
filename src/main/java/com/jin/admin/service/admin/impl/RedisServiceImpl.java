@@ -13,6 +13,7 @@ import com.jin.admin.service.admin.RedisService;
 import com.jin.admin.util.JWTUtil;
 import com.jin.admin.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public UserInfoData getBasicUserInfo(Long userId) {
+        remove(String.format(Constant.RedisKey.USER_INFO, userId));
         if (ObjectUtil.isEmpty(userId)) {
             return null;
         }
@@ -64,6 +66,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public List<MenuData> getMenuList(Long userId) {
+        remove(String.format(Constant.RedisKey.USER_MENU, userId));
         if (ObjectUtil.isEmpty(userId)) {
             return new ArrayList<>();
         }
@@ -78,6 +81,11 @@ public class RedisServiceImpl implements RedisService {
             } else {
                 menuList = sysMenuMapper.getMenuByUserId(userId);
             }
+            menuList.forEach(x -> {
+                MenuData.Meta meta = new MenuData.Meta();
+                BeanUtils.copyProperties(x, meta);
+                x.setMeta(meta);
+            });
             result = (List<MenuData>) ObjectUtil.buildDataWithChildren(menuList, null);
             pushList(String.format(Constant.RedisKey.USER_MENU, userId), result);
         }
@@ -134,6 +142,9 @@ public class RedisServiceImpl implements RedisService {
      * @param values
      */
     private <T> void pushList(String key, List<T> values) {
+        if (ObjectUtil.isEmpty(values)) {
+            return;
+        }
         redisTemplate.opsForList().rightPushAll(key, values);
     }
 

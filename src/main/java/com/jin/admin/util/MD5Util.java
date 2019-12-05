@@ -105,18 +105,18 @@ public class MD5Util {
         }
     }
 
-//    public static void main(String args[]) {
-//
-//        String plaintext = "DingSai";
-//
-//        System.out.println("明文：" + plaintext);
-//        System.out.println("普通MD5码：" + md5(plaintext));
-//
-//        // 获取加盐后的MD5值
-//        String ciphertext = generate(plaintext);
-//        System.out.println("加盐后MD5码：" + ciphertext);
-//        System.out.println("是否是同一字符串:" + verify(plaintext, ciphertext));
-//
-//    }
+    public static void main(String args[]) {
+
+        String plaintext = "admin123456";
+
+        System.out.println("明文：" + plaintext);
+        System.out.println("普通MD5码：" + md5(plaintext));
+
+        // 获取加盐后的MD5值
+        String ciphertext = generate(plaintext);
+        System.out.println("加盐后MD5码：" + ciphertext);
+        System.out.println("是否是同一字符串:" + verify(plaintext, "03b79141e56124261d88cc4593ab8ee40712597659b9481c"));
+
+    }
 
 }

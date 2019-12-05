@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @date 2019/11/6 13:43
  */
 public class ObjectUtil {
-    private static final String DEFAULT_PARENT_ID_FIELD_NAME = "parentId";
+    private static final String DEFAULT_PARENT_ID_FIELD_NAME = "pid";
     private static final String DEFAULT_ID_FIELD_NAME = "id";
     private static final String DEFAULT_CHILDREN_IDS_FIELD_NAME = "children";
     private static final String DEFAULT_CODE = "0";

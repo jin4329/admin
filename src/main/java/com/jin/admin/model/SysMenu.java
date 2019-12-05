@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-29
+ * @author Jin 2019-12-5
  */
 @Data
 @Entity
@@ -24,14 +24,19 @@ public class SysMenu {
 	private Long id;
 
 	/**
-	 * router中的path和name，驼峰并首字母大写
+	 * router中的name，驼峰并首字母大写
 	 */
 	private String name;
 
 	/**
-	 * 路由
+	 * router中的path
 	 */
 	private String path;
+
+	/**
+	 * 路由
+	 */
+	private String component;
 
 	private String title;
 

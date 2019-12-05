@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-29
+ * @author Jin 2019-12-5
  */
 @Data
 @Entity
@@ -48,5 +48,15 @@ public class BsUserInfo {
 
 	@CreationTimestamp
 	private Date createTime;
+
+	/**
+	 * 昵称
+	 */
+	private String nickname;
+
+	/**
+	 * 头像
+	 */
+	private String headImgUrl;
 
 }

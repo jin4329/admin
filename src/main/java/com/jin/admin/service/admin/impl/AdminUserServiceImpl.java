@@ -16,6 +16,7 @@ import com.jin.admin.util.EnumUtil;
 import com.jin.admin.util.MD5Util;
 import com.jin.admin.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,11 +38,11 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Override
     public AdminLoginData login(AdminLoginParam param) {
         // 获取账号基本信息
-        UserInfoData userInfo = getUserInfoData(param.getLoginName(), param.getPassword());
+        UserInfoData userInfo = getUserInfoData(param.getUsername(), param.getPassword());
         // 检查账号状态
         checkUserStatus(userInfo.getBasicUserStatus(), userInfo.getStatus());
         AdminLoginData result = new AdminLoginData();
-        result.setUserInfo(userInfo);
+        BeanUtils.copyProperties(userInfo, result);
 
         // 设置权限
         result.setMenuList(redisService.getMenuList(userInfo.getUserId()));
@@ -64,7 +65,7 @@ public class AdminUserServiceImpl implements AdminUserService {
             throw new BusinessException("用户不存在");
         }
         SysAdminUser adminUser = sysAdminUserRepository.getByUserId(bsUserInfo.getId());
-        boolean verify = MD5Util.verify(adminUser.getPassword(), MD5Util.generate(password));
+        boolean verify = MD5Util.verify(password, adminUser.getPassword());
         if (!verify) {
             throw new BusinessException("密码不正确");
         }

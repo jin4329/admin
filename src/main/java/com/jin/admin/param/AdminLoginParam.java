@@ -2,7 +2,7 @@ package com.jin.admin.param;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author Jin
@@ -11,8 +11,8 @@ import javax.validation.constraints.NotEmpty;
  */
 @Data
 public class AdminLoginParam {
-    @NotEmpty
-    private String loginName;
-    @NotEmpty
+    @NotBlank
+    private String username;
+    @NotBlank
     private String password;
 }

@@ -12,7 +12,7 @@ import org.hibernate.annotations.*;
 
 /**
  * 
- * @author Jin 2019-11-29
+ * @author Jin 2019-12-5
  */
 @Data
 @Entity
@@ -31,11 +31,6 @@ public class BsBasicUserInfo {
 	private String name;
 
 	/**
-	 * 昵称
-	 */
-	private String nickname;
-
-	/**
 	 * 电话
 	 */
 	private String tel;
@@ -45,17 +40,15 @@ public class BsBasicUserInfo {
 	 */
 	private String email;
 
+	/**
+	 * 11男  12女
+	 */
 	private Long sex;
 
 	/**
 	 * 地址
 	 */
 	private String address;
-
-	/**
-	 * 头像
-	 */
-	private String headImgUrl;
 
 	/**
 	 * 状态 0禁用  1启用

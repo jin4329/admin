@@ -11,7 +11,33 @@ import java.util.List;
  */
 @Data
 public class AdminLoginData {
-    private UserInfoData userInfo;
+    /**
+     * 姓名
+     */
+    private String name;
+
+    /**
+     * 昵称
+     */
+    private String nickname;
+
+    /**
+     * 电话
+     */
+    private String tel;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 头像
+     */
+    private String headImgUrl;
+
+
+    private String loginName;
     private List<MenuData> menuList;
     private String token;
 }

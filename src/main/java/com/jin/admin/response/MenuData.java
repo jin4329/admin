@@ -14,14 +14,19 @@ public class MenuData {
     private Long id;
 
     /**
-     * router中的path和name，驼峰并首字母大写
+     * router中的name，驼峰并首字母大写
      */
     private String name;
 
     /**
-     * 路由
+     * router中的path，驼峰并首字母小写
      */
     private String path;
+
+    /**
+     * 路由
+     */
+    private String component;
 
     private String title;
 
@@ -55,5 +60,13 @@ public class MenuData {
      */
     private Long pageId;
 
+    private Meta meta;
+
     private List<MenuData> children;
+
+    @Data
+    public static class Meta {
+        private String title;
+        private String icon;
+    }
 }
