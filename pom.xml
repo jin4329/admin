@@ -23,7 +23,7 @@
         <fastJson.version>1.2.58</fastJson.version>
         <durid.starter.version>1.1.9</durid.starter.version>
         <swagger.version>2.9.2</swagger.version>
-        <swagger.ui.version>2.9.2</swagger.ui.version>
+        <swagger.ui.version>2.10.0</swagger.ui.version>
         <jjwt.version>0.7.0</jjwt.version>
         <jwt.auth.version>3.3.0</jwt.auth.version>
         <tkmybatis.version>1.1.5</tkmybatis.version>
